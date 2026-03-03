@@ -357,12 +357,6 @@ select {
   text-decoration: none;
 }
 
-.blog-grid {
-  display: grid;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
 .blog-card {
   padding: 1.5rem;
   /* border: 11px solid rgba(207, 216, 220, 0);  */
