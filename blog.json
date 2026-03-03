@@ -1,11 +1,6 @@
 
 [
   {
-    "titulo": "Lectura sobre modelos estocásticos",
-    "extracto": "Exploramos cómo los modelos estocásticos se aplican en finanzas y ciencia de datos...",
-    "url": "blog/articulo-1.html"
-  },
-  {
     "titulo": "Reflexión sobre IA y privacidad",
     "extracto": "La privacidad en el entrenamiento de IA es un reto crucial en la era digital...",
     "url": "blog/ia-privacidad.html"

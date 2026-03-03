@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
         article.innerHTML = `
           <h3>${post.titulo}</h3>
           <p>${post.extracto}</p>
-          <a href="${post.url}" class="btn-secondary">Leer más</a>
+          <a href="${post.url}" target="_blank" class="btn">Leer más</a>
         `;
 
         blogContainer.appendChild(article);

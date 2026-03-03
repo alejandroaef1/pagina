@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Análisis de sentimientos - Alejandro Estrada</title>
+  <title>Privacidad - Alejandro Estrada</title>
   <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;600&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css" />
 </head>
@@ -17,6 +17,48 @@
     </nav>
   </header>
 
+  <section class="blog-post">
+    <h1>Reflexión sobre IA y privacidad</h1><br>
+    <p>
+      La privacidad en el entrenamiento de IA es un reto crucial en la era digital. A medida que los modelos de inteligencia artificial se vuelven más sofisticados, la cantidad de datos personales que se utilizan para entrenarlos también aumenta. Esto plantea preocupaciones sobre cómo se recopilan, almacenan y utilizan estos datos, así como sobre los riesgos de violaciones de privacidad y mal uso de la información personal.
+    </p><br>
+    <p>
+      Es fundamental implementar prácticas éticas y técnicas de protección de datos, como el aprendizaje federado o la anonimización, para garantizar que la privacidad de los individuos sea respetada mientras se aprovechan los beneficios de la inteligencia artificial. Además, es importante fomentar una mayor transparencia y responsabilidad por parte de las empresas y desarrolladores que trabajan con IA para construir confianza con los usuarios.
+    </p>
+    <br>
+    <h2>El experimento de Latanya Sweeney</h2><br>
+    <p>
+      El experimento de Latanya Sweeney es uno de los estudios más influyentes en el campo de la privacidad de datos y la reidentificación. En 1997, Sweeney demostró que los datos considerados “anónimos” podían volver a asociarse con personas concretas mediante la combinación con otras fuentes de información pública.
+    </p><br>
+    <p>
+      Para realizar su experimento, utilizó dos conjuntos de datos distintos. El primero era una base de datos de registros médicos supuestamente anonimizados, en la que se habían eliminado identificadores directos como el nombre y la dirección. El segundo era una lista pública de votantes que incluía nombres, direcciones, fechas de nacimiento, sexo y códigos postales. Aunque cada base de datos por separado no parecía revelar información sensible identificable, Sweeney comprobó que al cruzarlas era posible establecer correspondencias precisas.
+    </p><br>
+    <p>
+      La clave del experimento fue el uso de tres datos demográficos básicos: fecha de nacimiento, sexo y código postal. Sweeney demostró que la combinación de estos tres atributos podía identificar de manera única a un gran porcentaje de la población. De hecho, logró identificar los registros médicos del entonces gobernador de Massachusetts, William Weld, dentro de la base de datos supuestamente anónima, y le envió una copia de su propia información médica como prueba.
+    </p><br>
+    <p>
+      La conclusión principal del estudio fue que la eliminación de identificadores directos no garantiza la privacidad. Existen lo que se denominan “cuasi-identificadores”, es decir, datos que por sí solos no identifican a una persona, pero que al combinarse con otras fuentes pueden hacerlo. Este hallazgo tuvo un impacto profundo en la regulación y en las prácticas de manejo de datos, influyendo en estándares como los establecidos bajo la ley HIPAA en Estados Unidos y promoviendo el desarrollo de modelos formales de protección de la privacidad, como el k-anonimato.
+    </p><br>
+    <p>
+      El experimento de Sweeney cambió la forma en que investigadores, gobiernos y empresas entienden la anonimización, evidenciando que la privacidad no depende únicamente de eliminar nombres, sino de evaluar cuidadosamente cómo los datos pueden ser combinados y reutilizados.
+    </p><br>
+    <h2>Privacidad Diferencial</h2><br>
+    <p>
+      Desde la perspectiva de la privacidad diferencial, el problema que evidenció Latanya Sweeney no era simplemente un fallo técnico en la anonimización, sino una limitación estructural del enfoque tradicional de protección de datos. El modelo clásico consistía en eliminar identificadores directos (nombre, dirección, número de seguro social), suponiendo que el resto de la información era suficientemente inocua. Sin embargo, como demostró su experimento, la combinación de “cuasi-identificadores” podía permitir la reidentificación de individuos concretos.
+    </p><br>
+    <p>
+      La privacidad diferencial surge precisamente como respuesta a este tipo de vulnerabilidades. A mediados de la década de 2000, investigadores como Cynthia Dwork y sus colaboradores desarrollaron un marco matemático formal que no depende de suposiciones sobre qué atributos pueden identificar a una persona o sobre qué información externa posee un atacante. En lugar de intentar “anonimizar” los datos eliminando campos específicos, la privacidad diferencial redefine el objetivo de protección.
+    </p><br>
+    <p>
+      El principio central de la privacidad diferencial es el siguiente: el resultado de un análisis estadístico debe ser prácticamente el mismo, tanto si los datos de una persona están incluidos en el conjunto de datos como si no lo están. Es decir, la participación de un individuo no debe influir de manera significativa en el resultado publicado. De este modo, se protege a la persona incluso frente a adversarios que dispongan de información auxiliar muy amplia.
+    </p><br>
+    <p>
+      Técnicamente, esto se logra añadiendo una cantidad cuidadosamente calibrada de ruido aleatorio a los resultados de las consultas o análisis. Ese ruido introduce una pequeña imprecisión estadística, pero garantiza un límite cuantificable al riesgo de revelar información individual. Este límite se expresa mediante un parámetro (epsilon) que mide el nivel de privacidad: cuanto menor es, mayor es la protección.
+    </p><br>
+    <p>La privacidad diferencial surge, por tanto, como una evolución conceptual frente a los enfoques basados en la anonimización estática (como el k-anonimato). En lugar de confiar en la eliminación o generalización de atributos, ofrece una garantía matemática independiente del contexto externo. Esto la convierte en un estándar particularmente robusto en entornos donde los datos pueden combinarse con múltiples fuentes, como ocurre en la era digital. Por esa razón, ha sido adoptada por grandes organizaciones tecnológicas y agencias estadísticas como marco de referencia para la publicación segura de datos agregados.     
+    </p><br>
+
+      
 
   <footer>
     © 2025 | Alejandro Antonio Estrada Franco
