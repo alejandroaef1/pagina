@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Alejandro Estrada · Matemáticas Aplicadas</title>
+    <!-- Meta tags para responsividad -->
+    <meta name="description" content="Asesorias y cursos de matemáticas por Alejandro Estrada">
+    <meta name="keywords" content="matematicas, asesorias, Alejandro Estrada">
+    <meta name="theme-color" content="#2563eb">
+    
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="stylesDocencia.css">
+</head>
+<body>
+    <div class="card">
+        <div class="welcome-header">
+            <div class="back-button-container">
+                <a href="/inicio.html" class="back-button">
+                    <i class="fas fa-arrow-left"></i> Regresar
+                </a>
+            </div>
+
+            <div class="greeting">
+                <i class="fas fa-hand-peace"></i> 
+                <span>¡Hola, bienvenido al espacio de asesorias de Alejandro Estrada!</span>
+            </div>
+            
+            <!-- Contenedor responsivo con imagen y título -->
+            <div class="profile-container">
+                <img src="asesorias.png" alt="Alejandro Estrada" class="profile-image">
+                <h1>Asesorías de<br>Matemáticas</h1>
+            </div>
+            
+        </div>
+
+        <div class="intro-text">
+            <p class="active">No todas las asesorías en matemáticas son iguales. Hoy en día puedes encontrar opciones muy distintas: escuelas con cursos estandarizados, ingenieros que enseñan desde la práctica, o estudiantes que apoyan de forma puntual. Pero si lo que buscas es <strong>comprender verdaderamente las matemáticas</strong> la diferencia es significativa.</p>
+
+            <p>Yo trabajo desde otro enfoque. Cuento con formación de posgrado en ciencias matemáticas y experiencia tanto académica como aplicada, lo que significa que no solo conozco los procedimientos, sino también <strong>la estructura, el porqué y la lógica detrás de cada concepto</strong>. Mi objetivo no es que memorices, sino que desarrolles <strong>criterio matemático</strong>.</p>
+
+            <p>He participado en el desarrollo de cursos universitarios, lo que me permite <strong>explicar con claridad y con una secuencia didáctica real</strong>; trabajo creando contenido educativo profesional, por lo que sé cómo transformar ideas complejas en <strong>aprendizaje accesible</strong>; y también tengo experiencia en aplicaciones reales en finanzas y modelación, aportando una visión clara de <strong>para qué sirven realmente las matemáticas fuera del aula</strong>.</p>
+
+            <p>Esto se traduce en <strong>acompañamiento personalizado</strong>, <strong>comprensión profunda</strong>, <strong>desarrollo de intuición matemática</strong> y un <strong>camino estructurado</strong> para avanzar con seguridad. Si quieres <strong>entender, avanzar con claridad y realmente dominar las matemáticas</strong>, entonces estás en el lugar correcto.</p>
+        </div>
+
+        <div class="closing">
+            <p><strong>⚡ ¡Agenda tu clase muestra!</strong> Recuerda confirmar tu cita por WhatsApp indicando nombre, correo y tema, si no haces la confirmación tu cita será cancelada.</p><br>
+            
+            <div class="call-to-action">
+                <!--<a href="#" class="btn"><i class="fas fa-rocket"></i> Explorar cursos</a>-->
+                <a href="https://calendar.app.google/ZjW9BPnEQuHEUKfA6" 
+                    class="btn btn-outline" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    onclick="mostrarMensaje()">
+                    <i class="fa fa-calendar"></i> Agenda
+                </a>
+                <a href="https://wa.me/525631043598?text=Hola%20confirmo%20clase%20smuestra,%20el tema es:" 
+                    class="btn btn-outline" 
+                    target="_blank">
+                    <i class="fab fa-whatsapp"></i> Confirma
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <span><i class="fas fa-check-circle"></i> ¿Listo para ver las matemáticas con otros ojos?</span>
+            <span> Sitio realizado por Alejandro Antonio Estrada Franco</span>
+        </div>
+    </div>
+
+    <!-- Script opcional pero mejorado -->
+    <script>
+
+        // Detectar si es dispositivo táctil para optimizar hover
+        if ('ontouchstart' in window) {
+            document.body.classList.add('touch-device');
+        }
+
+        const paragraphs = document.querySelectorAll('.intro-text p');
+        let index = 0;
+
+        function showNextParagraph() {
+        paragraphs[index].classList.remove('active');
+
+        index = (index + 1) % paragraphs.length;
+
+        paragraphs[index].classList.add('active');
+        }
+
+        // cambia cada 4 segundos
+        setInterval(showNextParagraph, 3000);
+
+        // Ventana Emergente
+        function mostrarMensaje() {
+           alert("Serás redirigido para agendar tu clase 😊. Recuerda que para que tu clase muestra no se cancelada debes confirmarla por whatsapp.");
+}
+    </script>
+</body>
+</html>

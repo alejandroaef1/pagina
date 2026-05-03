@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Alejandro Estrada · Matemáticas Aplicadas</title>
     <!-- Meta tags para responsividad -->
-    <meta name="description" content="Cursos de matemáticas con enfoque aplicado - Academia, EdTech y Finanzas">
+    <meta name="description" content="Asesorias y cursos de matemáticas por Alejandro Estrada">
+    <meta name="keywords" content="matematicas, asesorias, Alejandro Estrada">
     <meta name="theme-color" content="#2563eb">
     
     <!-- Fuentes -->
@@ -38,8 +39,13 @@
             </div>
         </div>
 
+        <div class="button-group">
+            <a href="/asesorias.html" class="btn btn-asesorias">Asesorías</a>
+            <a href="/cursos.html" class="btn btn-cursos">Cursos</a>
+        </div>
+
         <div class="intro-text">
-            <p><strong>Mi pasión es tender un puente</strong> desde la mente del alumno hacia la profundidad de los conceptos. Este vínculo logra un aprendizaje significativo y duradero, que el estudiante se apropie de los conceptos más allá de sólo memorizar o quedarse en lo superficial. Conoce un poco más sobre mi <a href="https://alejandroaef.com.mx" target="_blank" rel="noopener noreferrer">en mi sitio web</a> y en mi <a href="https://www.linkedin.com/in/alejandro-antonio-estrada-franco-16b581242/" target="_blank" rel="noopener noreferrer">espacio de LinkedIn</a>.</p>
+            <p class="active"><strong>Mi pasión es tender un puente</strong> desde la mente del alumno hacia la profundidad de los conceptos. Este vínculo logra un aprendizaje significativo y duradero, así el estudiante se apropia de los conceptos más allá de sólo memorizar o quedarse en lo superficial. Conoce un poco más sobre mi <a href="https://alejandroaef.com.mx" target="_blank" rel="noopener noreferrer">en mi sitio web</a>.</p>
         </div>
 
         <div class="experience-grid">
@@ -110,6 +116,25 @@
                 }
             });
         });
+
+        // Detectar si es dispositivo táctil para optimizar hover
+        if ('ontouchstart' in window) {
+            document.body.classList.add('touch-device');
+        }
+
+        const paragraphs = document.querySelectorAll('.intro-text p');
+        let index = 0;
+
+        function showNextParagraph() {
+        paragraphs[index].classList.remove('active');
+
+        index = (index + 1) % paragraphs.length;
+
+        paragraphs[index].classList.add('active');
+        }
+
+        // cambia cada 4 segundos
+        setInterval(showNextParagraph, 3000);
 
         // Detectar si es dispositivo táctil para optimizar hover
         if ('ontouchstart' in window) {
