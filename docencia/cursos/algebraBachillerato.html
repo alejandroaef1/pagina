@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Alejandro Estrada · Matemáticas Aplicadas</title>
+    <!-- Meta tags para responsividad -->
+    <meta name="description" content="Curso de álgebra para bachillerato por Alejandro Estrada">
+    <meta name="keywords" content="matematicas, asesorias, álgebra, Alejandro Estrada">
+    <meta name="theme-color" content="#2563eb">
+    
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="../stylesDocencia.css">
+</head>
+<body>
+    <div class="card">
+        <div class="back-button-container">
+                <a href="../cursos.html" class="back-button">
+                    <i class="fas fa-arrow-left"></i> Regresar
+                </a>
+        </div>
+        <div class="welcome-header">
+            <div class="greeting">
+                <i class="fas fa-hand-peace"></i> 
+                <span>¡Hola gracias por visitar este curso!</span>
+            </div>
+            
+            <!-- Contenedor responsivo con imagen y título -->
+            <div class="profile-container">
+                <img src="cursoAlgebra.png" alt="Alejandro Estrada" class="profile-image">
+                <h1>Álgebra<br>para bachillerato.</h1>
+            </div>
+
+        <div class="intro-text">
+            <p class="active">Los métodos del <strong>álgebra</strong> son usados desde la antigüedad, los árabes sistematizaron sus métodos durante la edad mediay desde entonces continúa su desarrollo hasta hoy.<br><br>
+                El arte del álgebra consiste en abstraer las propiedades aritméticas de los números para desarrollar métodos generales que conducen a la solución de numerosos problemas. 
+                Su comprensión profunda es fundamental para el desarrollo de habilidades matemáticas avanzadas. En este curso, exploraremos las bases del álgebra con profundidad y claridad.</p>
+        </div>
+
+        <!-- Tabla de contenidos del curso -->
+        <div class="course-content">
+            <h2>📘 Esquema temático</h2>
+
+            <table class="content-table">
+                <thead>
+                    <tr>
+                        <th>Módulo</th>
+                        <th>Tema</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Lenguaje algebráico</td>
+                        <td>Comprenderás como el álgebra abstrae las propiedades aritméticas de los números (suma, resta, multiplicación, división, potenciación, radicación).</td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>Expresiones algebraicas</td>
+                        <td>Uso de variables, simplificación, términos semejantes y polinomios.</td>
+                    </tr>
+
+                    <tr>
+                        <td>3</td>
+                        <td>Ecuaciones </td>
+                        <td>Resolución de ecuaciones de primer y segundo grado.</td>
+                    </tr>
+
+                    <tr>
+                        <td>4</td>
+                        <td>Factorización</td>
+                        <td>Métodos principales de factorización algebraica.</td>
+                    </tr>
+
+                    <tr>
+                        <td>5</td>
+                        <td>Temas avanzados</td>
+                        <td>Logaritmos y exponentes, números complejos.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="call-to-action">
+                <a href="../formulario/formularioAlgebra.html" 
+                    class="btn btn-outline-2" 
+                    target="_blank">
+                     Inscribete
+                </a>
+        </div>    
+        <div class="closing">
+            <p><strong>⚡ Si tienes comentarios o preguntas acerca de este curso contáctame.</strong></p>
+            
+            <div class="call-to-action">
+                <!--<a href="#" class="btn"><i class="fas fa-rocket"></i> Explorar cursos</a>-->
+                <a href="https://www.facebook.com/profile.php?id=61578511259250" 
+                    class="btn btn-outline" 
+                    target="_blank" 
+                    rel="noopener noreferrer">
+                    <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <a href="https://wa.me/525631043598?text=Hola%20quisiera%20información%20sobre%20tus%20cursos%20o%20asesorías%20de%20matemáticas" 
+                    class="btn btn-outline" 
+                    target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <span><i class="fas fa-check-circle"></i> ¿Listo para ver las matemáticas con otros ojos?</span>
+            <span> Sitio realizado por Alejandro Antonio Estrada Franco</span>
+        </div>
+    </div>
+
+    <!-- Script opcional pero mejorado -->
+    <script>
+        // Smooth scroll para enlaces (opcional)
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                if(btn.getAttribute('href') === '#') {
+                    e.preventDefault();
+                    alert('🌟 Gracias por tu interés. Pronto podrás acceder a los cursos.');
+                }
+            });
+        });
+
+        // Detectar si es dispositivo táctil para optimizar hover
+        if ('ontouchstart' in window) {
+            document.body.classList.add('touch-device');
+        }
+
+        const paragraphs = document.querySelectorAll('.intro-text p');
+        let index = 0;
+
+        function showNextParagraph() {
+        paragraphs[index].classList.remove('active');
+
+        index = (index + 1) % paragraphs.length;
+
+        paragraphs[index].classList.add('active');
+        }
+
+        // cambia cada 4 segundos
+        setInterval(showNextParagraph, 3000);
+
+        // Detectar si es dispositivo táctil para optimizar hover
+        if ('ontouchstart' in window) {
+            document.body.classList.add('touch-device');
+        }
+    </script>
+</body>
+</html>

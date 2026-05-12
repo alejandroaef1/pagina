@@ -293,6 +293,19 @@ body::before {
     transform: scale(1.02);
 }
 
+.btn-outline-2 {
+    background: linear-gradient(135deg, #a1ff26 0%, #46fc98 100%);
+    color: #00076d;
+    border: 1px solid #94a3b8;
+}
+
+.btn-outline-2:hover {
+    background: #f1f4f9;
+    border-color: #334155;
+    color: #0b1e33;
+    transform: scale(1.02);
+}
+
 /* ===== PIE DE PÁGINA ===== */
 .footer-note {
     font-size: clamp(0.8rem, 2vw, 0.9rem);
@@ -534,4 +547,52 @@ body::before {
   .intro-text p {
     font-size: 0.95rem;
   }
+}
+
+.course-content {
+    margin-top: 2rem;
+}
+
+.course-content h2 {
+    margin-bottom: 1rem;
+    color: linear-gradient(90deg, #53ffaf, #0a2368);
+    font-size: 1.5rem;
+}
+
+.content-table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.content-table thead {
+    background: linear-gradient(90deg, #0b1964, #3ecaa0);
+    color: white;
+}
+
+.content-table th,
+.content-table td {
+    padding: 14px 16px;
+    text-align: left;
+}
+
+.content-table tbody tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+.content-table tbody tr:hover {
+    background: #e0ecff;
+    transition: 0.2s;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .content-table th,
+    .content-table td {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
 }

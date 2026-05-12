@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Formulario</title>
+
+<link rel="stylesheet" href="../stylesDocencia.css">
+
+<style>
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: 2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.form-input {
+    padding: 1rem;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--border-light);
+    font-size: 1rem;
+    background: white;
+    transition: 0.3s ease;
+    outline: none;
+}
+
+.form-input:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.form-actions {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+/* CAMBIAR COLOR DEL TEXTO */
+.btn {
+    color: #2563eb;
+}
+
+.payment-card {
+    margin-top: 2rem;
+    background: linear-gradient(145deg, #ffffff 0%, #f8fbff 100%);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-light);
+}
+
+.payment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.payment-header h2 {
+    font-size: 1.4rem;
+    color: var(--text-dark);
+}
+
+.price {
+    background: var(--primary-blue);
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.payment-description {
+    color: var(--text-soft);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.payment-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+    color: var(--text-dark);
+}
+
+.payment-btn {
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    justify-content: center;
+    background: #009ee3;
+    border: none;
+    color: white !important;
+}
+
+.payment-btn:hover {
+    background: #007eb5;
+}
+
+.whatsapp-btn {
+    width: 100%;
+    margin-top: 1rem;
+    text-align: center;
+    text-decoration: none;
+    justify-content: center;
+    background: #25D366;
+    border: none;
+    color: white !important;
+}
+
+.whatsapp-btn:hover {
+    background: #1ebe5d;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div class="welcome-header">
+        <div class="greeting">
+            📋 Registro
+        </div>
+
+        <div class="profile-container">
+            <h1>Álgebra</h1>
+        </div>
+    </div>
+
+    <div class="intro-text">
+        <p class="active">
+            <strong>Para registrarte en el curso de Álgebra:</strong><br>
+            1.- Completa el siguiente formulario y pulsa guardar registro.<br>
+            2.- Una vez que envíes tus datos, procede al pago para asegurar tu lugar en el curso<br>
+            3.- Finalmente envía tu comprobante de pago con tu nombre pulsando en <strong>"Enviar comprobante de pago".</strong><br>
+            4.- En más tardar 24 horas recibirás un correo de confirmación con los detalles de acceso al curso.
+        </p>
+    </div>
+
+    <form id="miFormulario" class="form-container">
+
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" id="nombre" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+            <label>Correo</label>
+            <input type="email" id="correo" class="form-input" required>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn">
+                Guardar Registro
+            </button>
+        </div>
+
+        <!-- TARJETA DE PAGO -->
+        <div class="payment-card">
+
+            <div class="payment-header">
+                <h2>Curso de Álgebra</h2>
+                <span class="price">$300 MXN</span>
+            </div>
+
+            <p class="payment-description">
+                Acceso completo al curso, materiales y asesorías.
+            </p>
+
+            <div class="payment-features">
+                <div>✅ Acceso inmediato</div>
+                <div>✅ Material descargable</div>
+                <div>✅ Soporte personalizado</div>
+            </div>
+
+            <a 
+                href="https://link.mercadopago.com.mx/iroquia"
+                target="_blank"
+                class="btn payment-btn"
+            >
+                Pagar
+            </a>
+            <a 
+                href="https://wa.me/5215631043598?text=Hola,%20ya%20realicé%20el%20pago%20del%20curso%20de%20Álgebra.%20Adjunto%20mi%20comprobante."
+                target="_blank"
+                class="btn whatsapp-btn"
+                >
+                Enviar comprobante de pago
+            </a>
+        </div>
+        
+    </form>
+
+</div>
+
+<script>
+document.getElementById("miFormulario").addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    const nombre = document.getElementById("nombre").value;
+    const correo = document.getElementById("correo").value;
+    const curso = "Álgebra";
+
+    const nuevoRegistro = {
+        nombre,
+        correo,
+        curso
+    };
+
+    let registros = JSON.parse(localStorage.getItem("registros")) || [];
+
+    registros.push(nuevoRegistro);
+
+    localStorage.setItem("registros", JSON.stringify(registros));
+
+    alert("Registro guardado correctamente");
+
+    this.reset();
+});
+</script>
+
+</body>
+</html>

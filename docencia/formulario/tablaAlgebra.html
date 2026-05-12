@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tabla de Registros</title>
+
+<link rel="stylesheet" href="../stylesDocencia.css">
+
+<style>
+
+.table-container {
+    overflow-x: auto;
+    margin-top: 2rem;
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.custom-table thead {
+    background: var(--darker-bg);
+    color: white;
+}
+
+.custom-table th,
+.custom-table td {
+    padding: 1rem;
+    text-align: left;
+}
+
+.custom-table tbody tr {
+    border-bottom: 1px solid var(--border-light);
+    transition: 0.3s ease;
+}
+
+.custom-table tbody tr:hover {
+    background: #f8fafc;
+}
+
+.custom-table td {
+    color: var(--text-soft);
+}
+
+.empty-message {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-light);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div class="welcome-header">
+        <div class="greeting">
+            📊 Datos Guardados
+        </div>
+
+        <div class="profile-container">
+            <h1>Tabla de Registros</h1>
+        </div>
+    </div>
+
+    <div class="intro-text">
+        <p class="active">
+            Aquí se muestran automáticamente los registros enviados desde el formulario.
+        </p>
+    </div>
+
+    <div class="table-container">
+
+        <table class="custom-table">
+
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Curso</th>
+                </tr>
+            </thead>
+
+            <tbody id="tablaBody">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<script>
+
+const registros = JSON.parse(localStorage.getItem("registros")) || [];
+
+const tablaBody = document.getElementById("tablaBody");
+
+if (registros.length === 0) {
+
+    tablaBody.innerHTML = `
+        <tr>
+            <td colspan="3" class="empty-message">
+                No hay registros guardados
+            </td>
+        </tr>
+    `;
+
+} else {
+
+    registros.forEach(registro => {
+
+        tablaBody.innerHTML += `
+            <tr>
+                <td>${registro.nombre}</td>
+                <td>${registro.correo}</td>
+                <td>${registro.curso}</td>
+            </tr>
+        `;
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
