@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Admin</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f3f4f6;
+      height: 100vh;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+    }
+
+    .sidebar {
+      background: white;
+      border-right: 1px solid #ddd;
+      padding: 16px;
+      overflow-y: auto;
+    }
+
+    .sidebar h2 {
+      margin-top: 0;
+    }
+
+    .chat-item {
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      background: #fafafa;
+    }
+
+    .chat-item.active {
+      border-color: #2563eb;
+      background: #dbeafe;
+    }
+
+    .main {
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+    }
+
+    #tituloChat {
+      margin: 0 0 10px 0;
+    }
+
+    #mensajes {
+      flex: 1;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .msg {
+      max-width: 75%;
+      padding: 10px 14px;
+      border-radius: 14px;
+      line-height: 1.4;
+      word-wrap: break-word;
+    }
+
+    .user {
+      align-self: flex-start;
+      background: #e5e7eb;
+      color: #111827;
+      border-bottom-left-radius: 4px;
+    }
+
+    .admin {
+      align-self: flex-end;
+      background: #2563eb;
+      color: white;
+      border-bottom-right-radius: 4px;
+    }
+
+    .meta {
+      font-size: 12px;
+      opacity: .85;
+      margin-bottom: 4px;
+    }
+
+    .row {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .row input {
+      flex: 1;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .row button {
+      padding: 12px 18px;
+      font-size: 16px;
+      border: none;
+      background: #16a34a;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .empty {
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>Chats</h2>
+    <div id="listaChats"></div>
+  </aside>
+
+  <main class="main">
+    <h2 id="tituloChat">Selecciona un chat</h2>
+    <div id="mensajes">
+      <div class="empty">Aquí aparecerán los mensajes del chat seleccionado.</div>
+    </div>
+
+    <div class="row">
+      <input id="respuesta" type="text" placeholder="Escribe tu respuesta como admin..." />
+      <button onclick="responder()">Responder</button>
+    </div>
+  </main>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import {
+      getFirestore,
+      collection,
+      doc,
+      addDoc,
+      setDoc,
+      onSnapshot,
+      query,
+      orderBy
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    // PEGA AQUÍ TU CONFIG DE FIREBASE
+    const firebaseConfig = {
+    apiKey: "AIzaSyCJbMCUmcBf_AyeFmrTMOHY_ajRE7rgBlk",
+    authDomain: "alejandro-estrada.firebaseapp.com",
+    projectId: "alejandro-estrada",
+    storageBucket: "alejandro-estrada.firebasestorage.app",
+    messagingSenderId: "692972700859",
+    appId: "1:692972700859:web:ad2ce2f2f73647f440959e"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const listaChats = document.getElementById("listaChats");
+    const mensajesDiv = document.getElementById("mensajes");
+    const tituloChat = document.getElementById("tituloChat");
+
+    let chatSeleccionado = null;
+    let desuscribirMensajes = null;
+
+    function formatearHora(ts) {
+      if (!ts) return "";
+      const d = new Date(ts);
+      return d.toLocaleString("es-MX");
+    }
+
+    
+function dibujarLista(snapshot) {
+  const lista = document.getElementById("listaChats");
+  lista.innerHTML = "";
+
+  snapshot.forEach(doc => {
+    const data = doc.data();
+
+    const div = document.createElement("div");
+    div.style.border = "1px solid black";
+    div.style.padding = "10px";
+    div.style.marginBottom = "10px";
+    div.style.cursor = "pointer";
+
+    div.innerText = data.userName || doc.id;
+
+    div.onclick = () => abrirChat(doc.id, data.userName || doc.id);
+
+    lista.appendChild(div);
+  });
+}
+
+
+      snapshot.forEach((docSnap) => {
+        const data = docSnap.data();
+        const div = document.createElement("div");
+        div.className = "chat-item" + (chatSeleccionado === docSnap.id ? " active" : "");
+        div.innerHTML = `
+          <strong>${data.userName || docSnap.id}</strong><br>
+          <small>ID: ${docSnap.id}</small><br>
+          <small>Última actividad: ${formatearHora(data.updatedAt)}</small>
+        `;
+        div.onclick = () => abrirChat(docSnap.id, data.userName || docSnap.id);
+        listaChats.appendChild(div);
+      });
+    
+
+    function abrirChat(chatId, userName) {
+      chatSeleccionado = chatId;
+      tituloChat.textContent = `Chat con ${userName}`;
+
+      // refrescar selección visual
+      
+onSnapshot(collection(db, "chats"), (snapshot) => {
+  console.log("Chats encontrados:", snapshot.docs.length);
+});
+
+      onSnapshot(chatsQ, dibujarLista);
+
+      if (desuscribirMensajes) desuscribirMensajes();
+
+      const mensajesRef = collection(db, "chats", chatId, "mensajes");
+      const q = query(mensajesRef, orderBy("createdAt", "asc"));
+
+      desuscribirMensajes = onSnapshot(q, (snapshot) => {
+        mensajesDiv.innerHTML = "";
+
+        if (snapshot.empty) {
+          mensajesDiv.innerHTML = `<div class="empty">No hay mensajes todavía.</div>`;
+          return;
+        }
+
+        snapshot.forEach((docSnap) => {
+          const data = docSnap.data();
+          const div = document.createElement("div");
+          div.className = `msg ${data.sender === "admin" ? "admin" : "user"}`;
+          div.innerHTML = `
+            <div class="meta"><strong>${data.sender === "admin" ? "Admin" : userName}</strong> · ${formatearHora(data.createdAt)}</div>
+            <div>${data.text}</div>
+          `;
+          mensajesDiv.appendChild(div);
+        });
+
+        mensajesDiv.scrollTop = mensajesDiv.scrollHeight;
+      });
+    }
+
+    // Escuchar lista de chats en tiempo real
+    const chatsQ = collection(db, "chats")
+
+    window.responder = async function () {
+      if (!chatSeleccionado) {
+        alert("Selecciona primero un chat.");
+        return;
+      }
+
+      const input = document.getElementById("respuesta");
+      const text = input.value.trim();
+
+      if (!text) return;
+
+      await addDoc(collection(db, "chats", chatSeleccionado, "mensajes"), {
+        sender: "admin",
+        text,
+        createdAt: Date.now()
+      });
+
+      await setDoc(doc(db, "chats", chatSeleccionado), {
+        updatedAt: Date.now()
+      }, { merge: true });
+
+      input.value = "";
+    };
+
+    document.getElementById("respuesta").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") responder();
+    });
+
+  </script>
+</body>
+</html>

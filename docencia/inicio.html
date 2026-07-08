@@ -80,8 +80,12 @@
 
         <div class="closing">
             <p><strong>⚡ Esta combinación única</strong> me permite ofrecerte cursos y asesorías donde no solo elevarás tu nivel, sino que <strong>te apropiarás</strong> de los conceptos llegando a un conocimiento profundo que te permitirá <strong>dominar</strong> los temas de manera eficaz.</p><br>
-             <p>Si quieres saber más sobre mis <strong>cursos, asesorías o proyectos</strong>, no dudes en contactarme. Estoy aquí para ayudarte a alcanzar tus objetivos educativos y profesionales.</p><br>
-             <p>Escríbeme a alejandroaef@proton.me</p>
+             <p>Si quieres saber más sobre mis <strong>cursos, asesorías o proyectos</strong>, no dudes en contactarme.</p><br>
+             <p>Inicia un chat privado para conversar:</p>
+            
+            <input type="text" id="nombre" placeholder="Escribe tu nombre">
+            <button onclick="irChat()">Entrar</button>
+
             
             <div class="call-to-action">
                 <!--<a href="#" class="btn"><i class="fas fa-rocket"></i> Explorar cursos</a>-->
@@ -140,6 +144,20 @@
         if ('ontouchstart' in window) {
             document.body.classList.add('touch-device');
         }
+        
+        //Chat privado.
+        function irChat() {
+        const nombre = document.getElementById("nombre").value;
+
+        if (!nombre) {
+            alert("Escribe tu nombre");
+            return;
+        }
+
+        // Redirige al chat con el nombre
+        window.location.href =`chat.html?chat=${encodeURIComponent(nombre)}&name=${encodeURIComponent(nombre)}`;
+        }
+
     </script>
 </body>
 </html>
