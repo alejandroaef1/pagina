@@ -59,12 +59,19 @@
                 <div class="exp-icon">📚</div>
                 <h3>Algebra Lineal & Datos</h3>
                 <p>Aprende a usar vectores y matrices para entender, transformar y dominar datos, logrando un manejo eficiente y resultados claros en su análisis.</p>
-                <a 
+                <!--<a 
                 href="cursos/algebraLineal.html" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 class="institution">
                 saber más
+            </a>-->
+            <a 
+                href="#" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="institution">
+                Informes
             </a>
             </div>
             
@@ -72,12 +79,19 @@
                 <div class="exp-icon">📈</div>
                 <h3>Precálculo</h3>
                 <p>Domina los fundamentos del cálculo comprende funciónes, números reales, límites y las herramientas necesarias para abordar el cálculo diferencial e integral.</p>
-                <a 
+                <!--<a 
                 href="cursos/precalculo.html" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 class="institution">
                 saber más
+            </a>-->
+            <a 
+                href="#" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="institution">
+                Informes
             </a>
             </div>
             
@@ -85,8 +99,13 @@
                 <div class="exp-icon"><i class="fas fa-dice-five"></i></div>
                 <h3>Probabilidad I</h3>
                 <p>Comprende y modela la incertidumbre para anticipar resultados y tomar decisiones con fundamento probabilístico.</p>
-                <a 
+                <!--<a 
                 href="https://wa.me/525631043598?text=Hola%20quisiera%20información%20sobre%20el%20curso%20de%20Probabilidad%201" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="institution"> -->
+                <a 
+                href="#" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 class="institution">
@@ -152,7 +171,7 @@
         }
 
         // cambia cada 4 segundos
-        setInterval(showNextParagraph, 3000);
+        setInterval(showNextParagraph, 6000);
 
         //let interval = setInterval(showNextParagraph, 3000);
 
@@ -162,6 +181,15 @@
         //container.addEventListener('mouseleave', () => {
         //  interval = setInterval(showNextParagraph, 3000);
         //});
-        </script>
+        // Smooth scroll para enlaces (opcional)
+        document.querySelectorAll('.institution').forEach(institution => {
+            institution.addEventListener('click', (e) => {
+                if(institution.getAttribute('href') === '#') {
+                    e.preventDefault();
+                    alert('🌟 Gracias por tu interés. Por ahora este curso no esta disponible. Permanece atento a nuevas noticias.');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

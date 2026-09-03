@@ -76,6 +76,7 @@ body::before {
 }
 
 /* ===== ENCABEZADO CON IMAGEN ===== */
+
 .welcome-header {
     margin-bottom: var(--section-gap);
 }
@@ -491,6 +492,7 @@ body::before {
     background-color: var(--dark-blue);
     color: white;
 }
+/* Barra superior */
 
 /* boton regresar */
 .back-button-container {
@@ -522,6 +524,21 @@ body::before {
 
 .back-button i {
     font-size: 0.85rem;
+}
+
+/* Logo */
+.logo-container {
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    margin-right: clamp(1rem, 4vw,4rem);
+}
+
+.course-logo {
+    width: clamp(60px, 8vw, 90px);
+    height: auto;
+    object-fit: contain;
+    display: block;
 }
 
 /* párrafo transición*/
@@ -597,6 +614,9 @@ body::before {
 .content-table tbody tr:hover {
     background: #e0ecff;
     transition: 0.2s;
+}
+.content-table {
+    margin-bottom: var(--section-gap);
 }
 
 /* Responsive */
